@@ -1,5 +1,9 @@
 import React from "react";
 import { Flex, Input, Button } from "@chakra-ui/react";
+import "./Footer.css";
+
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import SendIcon from "@mui/icons-material/Send";
 
 const Footer = ({ inputMessage, setInputMessage, handleSendMessage }) => {
   const sendMessage = () => {
@@ -15,9 +19,6 @@ const Footer = ({ inputMessage, setInputMessage, handleSendMessage }) => {
         placeholder="Type Something..."
         border="none"
         borderRadius="none"
-        _focus={{
-          border: "1px solid black",
-        }}
         onKeyPress={(e) => {
           if (e.key === "Enter") {
             sendMessage();
@@ -26,20 +27,10 @@ const Footer = ({ inputMessage, setInputMessage, handleSendMessage }) => {
         value={inputMessage}
         onChange={(e) => setInputMessage(e.target.value)}
       />
-      <Button
-        bg="black"
-        color="white"
-        borderRadius="none"
-        _hover={{
-          bg: "white",
-          color: "black",
-          border: "1px solid black",
-        }}
-        disabled={!inputMessage || !inputMessage.trim()}
-        onClick={sendMessage}
-      >
-        Send
-      </Button>
+      <AttachFileIcon
+        style={{ fontSize: 30, marginLeft: "8px", marginRight: "8px" }}
+      />
+      <SendIcon style={{ fontSize: 30 }} />
     </Flex>
   );
 };
