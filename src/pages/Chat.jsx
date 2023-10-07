@@ -15,14 +15,14 @@ const Chat = () => {
       console.log("Loading older messages...");
 
       const response = await fetch(
-        `https://qa.corider.in/assignment/chat?page=4`
+        `https://qa.corider.in/assignment/chat?page=0`
       );
 
       const data = await response.json();
       console.log("Data received:", data);
 
-      setMessages([...messages, ...data.chats]);
-      console.log("Updated Messages:", [...messages, ...data.chats]);
+      setMessages((prevMessages) => [...data.chats, ...prevMessages]);
+      console.log("Updated Messages:", [...data.chats, ...messages]);
 
       setPageNumber(pageNumber + 1);
     } catch (error) {
@@ -31,9 +31,8 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    // Load initial messages when component mounts
     loadOlderMessages();
-  }, []); // Empty dependency array means this effect runs only once
+  }, []);
 
   const handleSendMessage = (message) => {
     if (!message.trim().length) {
@@ -42,10 +41,6 @@ const Chat = () => {
 
     setMessages((old) => [...old, { from: "me", text: message }]);
 
-    // Assuming your API allows sending messages
-    // Add code to send message to the server
-
-    // For demo purposes, simulate a reply from the computer after 1 second
     setTimeout(() => {
       setMessages((old) => [...old, { from: "computer", text: message }]);
     }, 1000);
