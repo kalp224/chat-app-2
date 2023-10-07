@@ -7,7 +7,7 @@ const Messages = ({ messages, loadOlderMessages }) => {
 
   const handleScroll = () => {
     const container = messagesContainerRef.current;
-    if (container.scrollTop === 0) {
+    if (container.scrollTop === 0 && messages.length > 0) {
       loadOlderMessages();
     }
   };
@@ -27,20 +27,27 @@ const Messages = ({ messages, loadOlderMessages }) => {
       flexDirection="column"
       p="3"
       overflowY="scroll"
+      overflowX="hidden"
       h="75vh"
       ref={messagesContainerRef}
+      bg="#F0F0F0"
     >
       {messages.map((item, index) => {
         if (item.from === "me") {
           return (
             <Flex key={index} w="100%" justify="flex-end">
               <Flex
-                bg="black"
+                bg="#0081C9"
                 color="white"
                 minW="100px"
                 maxW="350px"
                 my="1"
                 p="3"
+                borderTopRadius="10"
+                borderTopLeftRadius="10px"
+                borderBottomRightRadius="0px"
+                borderBottomLeftRadius="10px"
+                boxShadow="0px 4px 8px 0px rgba(0, 0, 0, 0.08)"
               >
                 <Text>{item.text}</Text>
               </Flex>
@@ -55,12 +62,17 @@ const Messages = ({ messages, loadOlderMessages }) => {
                 bg="blue.300"
               ></Avatar>
               <Flex
-                bg="gray.100"
+                bg="#F7F7F7"
                 color="black"
                 minW="100px"
                 maxW="350px"
                 my="1"
                 p="3"
+                borderTopLeftRadius="0px"
+                borderTopRightRadius="10px"
+                borderBottomRightRadius="10px"
+                borderBottomLeftRadius="10px"
+                boxShadow="0px 4px 8px 0px rgba(0, 0, 0, 0.08)"
               >
                 <Text>{item.text}</Text>
               </Flex>
