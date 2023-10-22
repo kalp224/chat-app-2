@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Avatar, AvatarBadge, Text } from "@chakra-ui/react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "./Header.css";
-
+//header starts
 const Header = () => {
   return (
     <Flex w="100%" justify="space-between" align="center">
