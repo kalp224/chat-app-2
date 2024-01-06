@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Avatar, Flex, Text } from "@chakra-ui/react";
 import "./styles.css";
-
+//messages
 const Messages = ({ messages, loadOlderMessages }) => {
   const messagesContainerRef = useRef();
 
