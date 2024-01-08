@@ -3,7 +3,7 @@ import { Avatar, Flex, Text } from "@chakra-ui/react";
 import "./styles.css";
 const Messages = ({ messages, loadOlderMessages }) => {
   const messagesContainerRef = useRef();
-
+  //
   const handleScroll = () => {
     const container = messagesContainerRef.current;
     if (container.scrollTop === 0 && messages.length > 0) {
